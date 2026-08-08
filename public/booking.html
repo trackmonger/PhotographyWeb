@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Booking - Photography</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Booking</h1>
+    <nav>
+      <a href="/">Gallery</a>
+      <a href="/booking.html">Booking</a>
+      <a href="/admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Book a session</h2>
+    <p>To book a session, please contact me:</p>
+    <ul>
+      <li>Email: <a href="mailto:photographer@example.com">photographer@example.com</a></li>
+      <li>Phone: +1 (555) 123-4567</li>
+    </ul>
+
+    <h3>Request form</h3>
+    <form action="mailto:photographer@example.com" method="post" enctype="text/plain">
+      <label>Your name<br><input name="name" required></label><br>
+      <label>Email<br><input name="email" type="email" required></label><br>
+      <label>Message<br><textarea name="message" rows="6"></textarea></label><br>
+      <button type="submit">Send booking request</button>
+    </form>
+  </main>
+</body>
+</html>

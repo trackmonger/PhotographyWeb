@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Photography</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Admin</h1>
+    <nav>
+      <a href="/">Gallery</a>
+      <a href="/booking.html">Booking</a>
+      <a href="/admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="login">
+      <h2>Admin login</h2>
+      <label>Admin password: <input id="password" type="password"></label>
+      <button id="loginBtn">Unlock</button>
+    </section>
+
+    <section id="adminArea" style="display:none">
+      <h2>Add photo</h2>
+      <form id="addForm">
+        <label>Title<br><input name="title"></label><br>
+        <label>Description<br><textarea name="description"></textarea></label><br>
+        <label>Price<br><input name="price"></label><br>
+        <label>Image file<br><input type="file" name="image"></label><br>
+        <p>or provide an image URL</p>
+        <label>Image URL<br><input name="imageUrl"></label><br>
+        <button type="submit">Add photo</button>
+      </form>
+
+      <h2>Existing photos</h2>
+      <div id="photos"></div>
+    </section>
+  </main>
+
+  <script src="/admin.js"></script>
+</body>
+</html>
