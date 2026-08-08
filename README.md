@@ -1,38 +1,43 @@
 # PhotographyWeb
 
-This is a lightweight photography showcase web application with a simple admin interface to add/remove photos and a booking information page.
+This repository now includes:
+- SQLite-backed storage for photos and admin users
+- Stronger admin authentication using username/password + server-side sessions
+- Dockerfile and docker-compose for deployment
 
-Features
-- Public gallery page showing photos, titles, descriptions, and price
-- Booking page with contact information
-- Admin interface (protected by X-Admin-Password header) to add photos (upload or by URL) and remove photos
-
-Quick start
+Quick start (local)
 
 1. Install dependencies
 
    npm install
 
-2. Start the server
+2. Start the server with an admin password (and optional admin username and session secret):
 
-   ADMIN_PASSWORD=yourpassword npm start
+   ADMIN_USER=admin ADMIN_PASSWORD=yourpassword SESSION_SECRET=some-secret npm start
 
-3. Open http://localhost:3000 in your browser.
+3. Open http://localhost:3000
+   - Gallery: /
+   - Booking: /booking.html
+   - Admin: /admin.html (use the admin password you set)
 
-Admin usage
+Docker (recommended for deployment)
 
-- Visit /admin.html to open the admin UI. Enter the admin password (same as ADMIN_PASSWORD env) to add or remove photos.
-- The server expects the admin password to be sent as an `X-Admin-Password` header on API requests.
+Build and run with Docker Compose:
 
-Deployment notes
+  docker compose up --build -d
 
-- Uploaded images are stored in the `uploads/` directory.
-- Photos metadata is stored in `data/photos.json`.
+Environment variables (docker-compose.yml sets defaults; override as needed):
+- ADMIN_USER - admin username (default: admin)
+- ADMIN_PASSWORD - admin password (default: changeme)
+- SESSION_SECRET - session secret (default: change_this)
 
-Security
+Data persistence
 
-- This project uses a very simple password mechanism for demo purposes. For production, use HTTPS, stronger authentication, and store secrets securely.
+- SQLite DB and uploads are persisted to the `db/` and `uploads/` directories (mounted as volumes in docker-compose).
 
-License
+Security notes
 
-GPL-3.0
+- Admin authentication is now username/password with bcrypt-hashed password and server-session cookies.
+- For production, provide strong secrets and run behind HTTPS.
+
+License: GPL-3.0
